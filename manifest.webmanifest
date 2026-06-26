@@ -2,6 +2,7 @@
   "name": "EcoTracker City Care",
   "short_name": "EcoTracker",
   "description": "Piattaforma per segnalare, classificare e monitorare rifiuti abbandonati.",
+  "author": "NaCreator",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

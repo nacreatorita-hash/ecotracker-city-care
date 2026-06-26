@@ -468,6 +468,8 @@ export default function App() {
         <p className="flex items-center justify-center gap-1.5">
           <span>EcoTracker City Care &copy; 2026</span>
           <span className="text-[#D1D1D6]">|</span>
+          <span>Creato da NaCreator</span>
+          <span className="text-[#D1D1D6]">|</span>
           <span className="flex items-center gap-1 font-mono text-[#545456]">
             <Sparkles className="w-3.5 h-3.5 text-[#34C759] animate-pulse" /> Analizzato con Gemini Flash
           </span>
