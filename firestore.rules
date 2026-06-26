@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /waste_reports/{reportId} {
+      allow read: if true;
+      allow create: if isValidWasteReport(request.resource.data) && reportId == request.resource.data.id;
+      allow update: if isValidWasteReport(request.resource.data) && reportId == request.resource.data.id;
+      allow delete: if true;
+    }
+  }
+}
+
+function isValidWasteReport(data) {
+  return data.keys().hasAll(['id', 'lat', 'lng', 'eerCode', 'wasteType', 'isDangerous', 'severity', 'status', 'createdAt'])
+    && data.id is string && data.id.size() <= 128
+    && (data.lat is float || data.lat is int)
+    && (data.lng is float || data.lng is int)
+    && data.eerCode is string && data.eerCode.size() <= 32
+    && data.wasteType is string && data.wasteType.size() <= 256
+    && data.isDangerous is bool
+    && data.severity in ['low', 'medium', 'high', 'critical']
+    && data.status in ['reported', 'in_progress', 'cleaned']
+    && data.createdAt is string
+    && (!('photo' in data) || data.photo is string)
+    && (!('description' in data) || data.description is string)
+    && (!('notes' in data) || data.notes is string)
+    && (!('cleanupRecommendation' in data) || data.cleanupRecommendation is string)
+    && (!('reporterName' in data) || data.reporterName is string)
+    && (!('reporterEmail' in data) || data.reporterEmail is string);
+}

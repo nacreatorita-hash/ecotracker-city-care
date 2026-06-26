@@ -1,0 +1,11 @@
+{
+  "name": "Registro Rifiuti Abbandonati",
+  "description": "Applicazione per la segnalazione e registrazione di rifiuti abbandonati con mappa interattiva, scatto foto e classificazione tramite codici EER (CER) assistita da intelligenza artificiale.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

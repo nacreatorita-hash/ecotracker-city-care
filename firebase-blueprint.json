@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "WasteReport": {
+      "title": "WasteReport",
+      "description": "A report about abandoned waste containing EER code, classification details, GPS coordinates, and cleanup status.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the waste report"
+        },
+        "lat": {
+          "type": "number",
+          "description": "Latitude coordinate of the waste"
+        },
+        "lng": {
+          "type": "number",
+          "description": "Longitude coordinate of the waste"
+        },
+        "locationName": {
+          "type": "string",
+          "description": "Name or address of the location"
+        },
+        "eerCode": {
+          "type": "string",
+          "description": "EER code classifying the type of waste"
+        },
+        "wasteType": {
+          "type": "string",
+          "description": "Type/title of the waste"
+        },
+        "isDangerous": {
+          "type": "boolean",
+          "description": "Whether the waste is hazardous"
+        },
+        "photo": {
+          "type": "string",
+          "description": "Base64 image string or URL"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the situation"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"],
+          "description": "Severity of the waste accumulation"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["reported", "in_progress", "cleaned"],
+          "description": "Status of the cleanup operation"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp in ISO-8601 format"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Operational notes or comments"
+        },
+        "cleanupRecommendation": {
+          "type": "string",
+          "description": "Recommendation for the cleanup operation"
+        },
+        "reporterName": {
+          "type": "string",
+          "description": "Name of the reporter"
+        },
+        "reporterEmail": {
+          "type": "string",
+          "description": "Email of the reporter"
+        }
+      },
+      "required": ["id", "lat", "lng", "eerCode", "wasteType", "isDangerous", "severity", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "waste_reports": {
+      "schema": "WasteReport",
+      "description": "Public registry collection of abandoned waste reports"
+    }
+  }
+}
